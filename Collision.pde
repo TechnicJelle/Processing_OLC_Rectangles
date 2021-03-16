@@ -81,3 +81,7 @@ Collision DynamicRectVsRect(Rect in, Rect target) { //returns PVector contact_po
   }
   return new Collision(ret, c.contact_point, c.contact_normal, c.t_hit_near);
 }
+
+PVector elemmult(PVector a, PVector b) {
+  return new PVector(a.x * b.x, a.y * b.y);
+}

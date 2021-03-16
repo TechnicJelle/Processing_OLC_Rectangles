@@ -66,7 +66,3 @@ void draw() {
   }
   rect(vRects.get(1).pos.x, vRects.get(1).pos.y, vRects.get(1).size.x, vRects.get(1).size.y);
 }
-
-PVector elemmult(PVector a, PVector b) {
-  return new PVector(a.x * b.x, a.y * b.y);
-}
