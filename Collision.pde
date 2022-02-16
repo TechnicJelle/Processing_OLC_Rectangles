@@ -15,7 +15,7 @@ class Collision {
   }
 }
 
-Collision RayVsRect(PVector ray_origin, PVector ray_dir, Rect target) {
+Collision RayVsRect(PVector ray_origin, PVector ray_dir, StaticRect target) {
   //additional returns
   PVector contact_point;
   PVector contact_normal = new PVector(-1, -1);
@@ -66,12 +66,12 @@ Collision RayVsRect(PVector ray_origin, PVector ray_dir, Rect target) {
   return new Collision(true, contact_point, contact_normal, t_hit_near);
 }
 
-Collision DynamicRectVsRect(Rect in, Rect target) { //returns PVector contact_point, PVector contact_normal, float fTime
+Collision DynamicRectVsStaticRect(DynamicRect in, StaticRect target) { //returns PVector contact_point, PVector contact_normal, float fTime
   boolean ret = false;
   if (in.vel.x == 0 && in.vel.y == 0)
     return new Collision(false);
 
-  Rect extended_target = new Rect(PVector.sub(target.pos, PVector.div(in.size, 2)), PVector.add(target.size, in.size));
+  StaticRect extended_target = new StaticRect(PVector.sub(target.pos, PVector.div(in.size, 2)), PVector.add(target.size, in.size));
   Collision c = RayVsRect(PVector.add(in.pos, PVector.div(in.size, 2)), in.vel, extended_target);
   if (c.result) {
     if (c.t_hit_near <= 1.0f)
